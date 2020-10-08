@@ -1,0 +1,25 @@
+{
+  "name": "req-eng-ir",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jtsalisbury/req-eng-ir.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jtsalisbury/req-eng-ir/issues"
+  },
+  "homepage": "https://github.com/jtsalisbury/req-eng-ir#readme",
+  "dependencies": {
+    "compromise": "^13.5.0",
+    "glob": "^7.1.6",
+    "jaccard": "^0.4.0",
+    "keyword-extractor": "0.0.19"
+  }
+}
