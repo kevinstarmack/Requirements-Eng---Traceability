@@ -4,8 +4,8 @@ const keywords = require('keyword-extractor');
 const jaccard = require('jaccard');
 const fs = require('fs')
 
-const INPUTS_FOLDER = 'C:\Users\kevin\OneDrive\Documents\requirements-3nfr-80fr.txt';
-const OUTPUTS_FOLDER = 'C:\Users\kevin\OneDrive\Documents\trace-requirements-3nfr-80fr.txt';
+const INPUTS_FOLDER = './inputs/';
+const OUTPUTS_FOLDER = './outputs/';
 const SIMILARITY_CUTOFF = 0;
 
 // Get all inputs
@@ -57,7 +57,7 @@ glob.sync(`${INPUTS_FOLDER}*.txt`).forEach(path => {
                 topics: words
             });
         });
-
+        
         // Loop through FR and compute similarities with each NFR
         let outString = '';
         fr.forEach(frData => {
@@ -74,7 +74,7 @@ glob.sync(`${INPUTS_FOLDER}*.txt`).forEach(path => {
             let r1 = results[0] > SIMILARITY_CUTOFF ? 1 : 0;
             let r2 = results[1] > SIMILARITY_CUTOFF ? 1 : 0;
             let r3 = results[2] > SIMILARITY_CUTOFF ? 1 : 0;
-
+            
             outString += `${frData.id},${r1},${r2},${r3}\n`
         });
 
