@@ -1,5 +1,5 @@
 {
-  "name": "req-eng-ir",
+  "name": "requirements_eng",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,18 +8,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jtsalisbury/req-eng-ir.git"
+    "url": "git+https://github.com/kevinstarmack/requirements_eng"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jtsalisbury/req-eng-ir/issues"
+    "url": "://github.com/kevinstarmack/requirements_eng/issues"
   },
-  "homepage": "https://github.com/jtsalisbury/req-eng-ir#readme",
+  "homepage": "https://github.com/kevinstarmack/requirements_eng#readme",
   "dependencies": {
     "compromise": "^13.5.0",
+    "fs": "0.0.1-security",
     "glob": "^7.1.6",
     "jaccard": "^0.4.0",
-    "keyword-extractor": "0.0.19"
+    "keyword-extractor": "0.0.19",
+    "keywords": "^0.1.2",
+    "nlp": "0.0.0",
+    "require": "^2.4.20"
   }
 }
