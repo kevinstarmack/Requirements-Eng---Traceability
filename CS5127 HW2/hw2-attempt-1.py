@@ -164,6 +164,7 @@ w = documents[i][0]
 #print (training[i])
 print (output[i])
 
+
 # compute sigmoid nonlinearity
 def sigmoid(x):
     output = 1/(1+np.exp(-x))
@@ -206,8 +207,7 @@ def think(sentence, show_details=False):
     # output layer
     l2 = sigmoid(np.dot(l1, synapse_1))
     return l2
-
-def train(X, y, hidden_neurons=10, alpha=1, epochs=50000, dropout=False, dropout_percent=0.5):
+def train(X, y, hidden_neurons=90, alpha=1, epochs=50000, dropout=False, dropout_percent=0.5):
     print ("Training with %s neurons, alpha:%s, dropout:%s %s" % (hidden_neurons, str(alpha), dropout, dropout_percent if dropout else '') )
     print ("Input matrix: %sx%s    Output matrix: %sx%s" % (len(X),len(X[0]),1, len(classes)) )
     np.random.seed(1)
@@ -289,7 +289,7 @@ y = np.array(output)
 
 start_time = time.time()
 
-train(X, y, hidden_neurons=100, alpha=0.1, epochs=100000, dropout=False, dropout_percent=0.2)
+train(X, y, hidden_neurons=90, alpha=.1, epochs=100000, dropout=False, dropout_percent=0.2)
 
 elapsed_time = time.time() - start_time
 print ("processing time:", elapsed_time, "seconds")
