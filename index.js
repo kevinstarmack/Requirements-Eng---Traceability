@@ -1,28 +1,30 @@
-const glob = require('glob');
-const nlp = require('compromise');
-const keywords = require('keyword-extractor');
+//can take in any number of FRs in "inputs"
+//after opening cmd line
+//type cd requirements_eng
+//node index.js
+//output found in Atom under "requirements-3nfr-80fr.txt"
 const jaccard = require('jaccard');
+const nlp = require('compromise');
+const glob = require('glob');
+const keywords = require('keyword-extractor');
 const fs = require('fs')
 
 const INPUTS_FOLDER = './inputs/';
 const OUTPUTS_FOLDER = './outputs/';
 const SIMILARITY_CUTOFF = 0;
-
 // Get all inputs
 glob.sync(`${INPUTS_FOLDER}*.txt`).forEach(path => {
-
     let nfr = [];
     let fr = [];
 
     // Read the file
     fs.readFile(path, 'utf-8', (err, contents) => {
-        let lines = contents.split('\n');
+        let lines = contents.split(/\r?\n/);
 
         lines.forEach(line => {
             if (line.length == 0) {
                 return;
             }
-
             // Split the requirement text from the type (FR/NFR)
             let typeEnd = line.indexOf(':');
             let type = line.substr(0, typeEnd);
@@ -32,9 +34,8 @@ glob.sync(`${INPUTS_FOLDER}*.txt`).forEach(path => {
                 language: 'english',
                 remove_digits: true,
                 return_changed_case: true,
-                remove_duplicates: false
+                remove_duplicates: false,
             });
-
             // Extract singular and infinite forms of word if possible
             words = words.map(word => {
                 let noun = nlp(word).nouns().toSingular().text();
@@ -57,7 +58,7 @@ glob.sync(`${INPUTS_FOLDER}*.txt`).forEach(path => {
                 topics: words
             });
         });
-        
+
         // Loop through FR and compute similarities with each NFR
         let outString = '';
         fr.forEach(frData => {
@@ -74,7 +75,7 @@ glob.sync(`${INPUTS_FOLDER}*.txt`).forEach(path => {
             let r1 = results[0] > SIMILARITY_CUTOFF ? 1 : 0;
             let r2 = results[1] > SIMILARITY_CUTOFF ? 1 : 0;
             let r3 = results[2] > SIMILARITY_CUTOFF ? 1 : 0;
-            
+
             outString += `${frData.id},${r1},${r2},${r3}\n`
         });
 
