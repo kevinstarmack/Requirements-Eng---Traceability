@@ -11,7 +11,7 @@ const fs = require('fs')
 
 const INPUTS_FOLDER = './inputs/';
 const OUTPUTS_FOLDER = './outputs/';
-const SIMILARITY_CUTOFF = 0;
+const SIMILARITY_CUTOFF = 0.08;
 // Get all inputs
 glob.sync(`${INPUTS_FOLDER}*.txt`).forEach(path => {
     let nfr = [];
