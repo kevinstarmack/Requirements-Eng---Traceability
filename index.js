@@ -59,7 +59,7 @@ glob.sync(`${INPUTS_FOLDER}*.txt`).forEach(path => {
             });
         });
 
-        // Loop through FR and compute similarities with each NFR
+// Loop through FR and compute similarities with each NFR
         let outString = '';
         fr.forEach(frData => {
             let results = [];
@@ -70,6 +70,7 @@ glob.sync(`${INPUTS_FOLDER}*.txt`).forEach(path => {
 
                 results.push(index);
             });
+
 
             // Based on the jaccard index and our cutoff, compute if the FR and NFR are related
             let r1 = results[0] > SIMILARITY_CUTOFF ? 1 : 0;
